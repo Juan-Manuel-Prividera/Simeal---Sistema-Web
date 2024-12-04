@@ -1,0 +1,39 @@
+<div class="tarjeta-personal">
+    <strong  class="nro-tarjeta">{{numeroTarjetaPersonal}}</strong>
+    <button class="btn btn-info btn-accesoso" id="btn-expand">Accesos disponibles</button>
+    <a style="text-decoration: none; margin-right: 3%" href="/solicitud/{{tarjeta_personal_id}}">
+        <button class="btn btn-info btn-accesos">Realizar Solicitud</button>
+    </a>
+</div>
+<div id="expandible-p" class="hidden">
+    <table>
+        <thead>
+        <th>Nombre heladera</th>
+        <th>Ubicación</th>
+        <th>Hora fin</th>
+        </thead>
+        <tbody>
+        {{#each solicitudes}}
+            <tr>
+                <td>{{this.nombre}}</td>
+                <td>{{this.ubicacion}}</td>
+                <td>{{this.horaFin}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function realizarSolicitud(tarjetaId) {
+        fetch(`${window.origin}:80/solicitud/` + tarjetaId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Asegura que los datos se envían como JSON
+            },
+        })
+    }
+
+
+</script>
+<script src="/js/desplegable.js"></script>

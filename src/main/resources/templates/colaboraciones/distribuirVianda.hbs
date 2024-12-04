@@ -1,0 +1,84 @@
+{{> templates/navbar_plain}}
+<head>
+    <link rel="stylesheet" href="/css/mapa.css">
+    <link rel="stylesheet" href="/css/containers.css">
+        <link rel="stylesheet" href="/css/navbar-style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/tarjetas.css">
+        <link rel="stylesheet" href="/css/heladeras.css">
+        <link rel="stylesheet" href="/css/formulario.css">
+        <link rel="stylesheet" href="/css/cargacolabs.css">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/distribuirViandas.css">
+</head>
+
+{{#if popup_message}}
+    {{> templates/popup}}
+{{/if}}
+
+<div class="container mt-4">
+    <div id="titulo-subtitulo">
+        <h2>Distribuir Vianda</h2>
+        <p>Indique la heladera origen y destino para la distribución.</p>
+    </div>
+
+    <div class="mapa-container">
+        <div class="m-3 mt-5 redondeado sombreado" id="mapid" style="height: 400px;"></div>
+    </div>
+
+    <div class="form-distribucion">
+        <form class="" action="/colaboracion/distribucionVianda" method="post">
+            <div class="row">
+                <!-- Heladera origen -->
+                <div class="col-md-6 mb-4">
+                    <label for="origen_nombre">Heladera Origen</label>
+                    <label readonly id="origen_nombre" name="origen_nombre" type="text" class="form-control" placeholder="Heladera Origen" required></label>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="origen_direccion">Dirección Origen</label>
+                    <label readonly id="origen_direccion" name="origen_direccion" type="text" class="form-control" placeholder="Dirección Origen" required></label>
+                </div>
+            </div>
+            <input id="origen_id" name="origen_id" type="text" hidden="hidden" required>
+            <div class="row">
+                <!-- Heladera destino -->
+                <div class="col-md-6 mb-4">
+                    <label for="destino_nombre">Heladera Destino</label>
+                    <label readonly  id="destino_nombre" name="destino_nombre" type="text" class="form-control" placeholder="Heladera Destino" required></label>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="destino_direccion">Dirección Destino</label>
+                    <label readonly  id="destino_direccion" name="destino_direccion" type="text" class="form-control" placeholder="Dirección Destino" required></label>
+                </div>
+            </div>
+            <input id="destino_id" name="destino_id" type="text" hidden="hidden" required>
+
+            <label for="motivo">Motivo</label>
+            <select name="motivo" id="motivo" class="form-control mb-4" required>
+                <option disabled selected hidden="hidden" value="">Seleccione un motivo</option>
+                <option value="SOBREPASO_DE_CAPACIDAD">Sobrepaso de capacidad</option>
+                <option value="FALTA_DE_DISPONIBILIDAD">Falta de disponibilidad</option>
+                <option value="DESPERFECTO_EN_HELADERA">Desperfecto en heladera</option>
+                <option value="PARA_ESTIRAR_LAS_PIERNAS">Para estirar las piernas</option>
+                <option value="OTRO">Otro</option>
+            </select>
+
+            <button type="submit" class="btn btn-success rounded center" id="boton-aceptar">Confirmar</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    #boton-aceptar {
+        width: 40%;
+    }
+</style>
+
+<script type="module" src="/js/mapaDistribuirVianda.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>

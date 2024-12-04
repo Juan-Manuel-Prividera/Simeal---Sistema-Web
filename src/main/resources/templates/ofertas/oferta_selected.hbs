@@ -1,0 +1,41 @@
+{{#partial "ofertas"}}
+    <div class="d-flex">
+        <div class="container-inferior">
+            {{#each ofertas}}
+                <a class="offer-card" href="/ofertas/{{this.id}}" data-point="{{this.puntosNecesarios}}" data-rubro="{{this.rubroId}}">
+                    <img src="{{this.imagen}}" alt="Imagen de la oferta" class="offer-image-short">
+                    <p class="offer-title">{{this.nombre}}</p>
+                    <p class="offer-update">{{this.puntosNecesarios}} pts</p>
+                    <p class="offer-update">({{this.rubroNombre}})</p>
+                    <p class="offer-update">Fecha de publicación: {{this.fechaDeRealizacion}}</p>
+                </a>
+            {{/each}}
+        </div>
+
+        <!-- Sección de Detalles -->
+        <div class="container-inferior-derecho" style="max-width: 30%">
+            <img src="{{oferta.imagen}}" alt="Producto">
+            <h2><b>{{oferta.nombre}}</b></h2>
+            <div class="texto-izquierda">
+                <h4>{{oferta.productoNombre}}</h4>
+                <p class="descripcion">Puntos necesarios: <b>{{oferta.puntosNecesarios}}</b></p>
+                <p class="descripcion"><i>{{oferta.productoDes}}</i><p>
+            </div>
+
+            <a class="dark-btn" id="confirmarCompraBtn">Comprar</a>
+            <!-- Sección de Confirmación -->
+            <div class="confirmation-box overlayContent" id="confirmacionDisplay">
+                <p class="confirmation-text"><b>¿Desea confirmar la compra?</b></p>
+                <div class="confirmation-buttons">
+                    <a class="btn btn-success confirm-btn my-button redondeado" id="confirmarBtn" data-ofertaId="{{oferta.id}}">Confirmar</a>
+                    <a class="btn btn-danger cancel-btn my-button redondeado" id="cancelarBtn">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="/js/displayConfirmarCompraOferta.js"></script>
+<script src="/js/btnComprarOferta.js"></script>
+{{/partial}}
+{{> templates/ofertas/oferta_upperBox}}

@@ -1,0 +1,29 @@
+{{> templates/navbar}}
+{{#if popup_title}}
+    {{> templates/popup}}
+{{/if}}
+
+<div class="container-supremo">
+    <div class="botones-container-izq">
+        <h2 >Tarjeta Personal</h2>
+        <div class="tarjeta-btns ml-auto mr-auto">
+            <a href="/tarjeta/new">
+                <button class="btn btn-dark mt-5 mb-3">Agregar tarjeta</button>
+            </a>
+            <a href="/tarjeta/delete">
+                <button class="btn btn-dark mb-3">Eliminar tarjeta</button>
+            </a>
+            <a href="/tarjeta/update">
+                <button class="btn btn-dark mb-3">Modificar tarjeta</button>
+            </a>
+        </div>
+    </div>
+    <div class="container-tarjetas-der">
+        <div class="tarjeta-personal-container">
+        {{> templates/tarjetas/tarjeta_personal}}
+        </div>
+        <div class="contenido-container">
+            {{#block "contenido"}}{{/block}}
+        </div>
+    </div>
+</div>

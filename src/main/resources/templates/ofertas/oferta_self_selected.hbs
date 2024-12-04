@@ -1,0 +1,57 @@
+{{#partial "ofertas"}}
+<div class="d-flex">
+    <div class="container-inferior">
+        {{#each ofertas}}
+            <a class="offer-card" href="/ofertas/misOfertas/{{this.id}}" data-point="{{this.puntosNecesarios}}" data-rubro="{{this.rubroId}}">
+                <img src="{{this.imagen}}" alt="Imagen de la oferta" class="offer-image-short">
+                <p class="offer-title">{{this.nombre}}</p>
+                <p class="offer-update">{{this.puntosNecesarios}} pts</p>
+                <p class="offer-update">({{this.rubroNombre}})</p>
+                <p class="offer-update">Fecha de publicación: {{this.fechaDeRealizacion}}</p>
+            </a>
+        {{/each}}
+    </div>
+    <!-- Sección de Detalles -->
+    <div class="container-inferior-derecho" style="max-width: 30%">
+        <img src="{{oferta.imagen}}" alt="Producto">
+        <h2><b>{{oferta.nombre}}</b></h2>
+        <div class="texto-izquierda">
+            <h4>{{oferta.productoNombre}}</h4>
+            <p class="descripcion">Puntos necesarios: <b>{{oferta.puntosNecesarios}}</b></p>
+            <p class="descripcion"><i>{{oferta.productoDes}}</i><p>
+        </div>
+        <a class="btn dark-btn mt-3 mb-3" style="max-width:250px" href="/ofertas/misOfertas/{{oferta.id}}/modificar">Modificar</a>
+        <a class="btn dark-btn mt-3 mb-3" style="max-width:250px" id="confirmarCompraBtn">Eliminar</a>
+        <!-- Sección de Confirmación -->
+        <div class="confirmation-box overlayContent" id="confirmacionDisplay">
+            <p class="confirmation-text"><b>¿Deseas confirmar la eliminación de la oferta?</b></p>
+            <div class="confirmation-buttons">
+                <a class="btn btn-success confirm-btn my-button redondeado" id="eliminar" data-ofertaId="{{oferta.id}}">Eliminar</a>
+                <a class="btn btn-danger cancel-btn my-button redondeado" id="cancelarBtn">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('eliminar').addEventListener('click', function () {
+            fetch("/ofertas/misOfertas/{{oferta.id}}/modificar", {
+                method: "DELETE"
+            })
+                    .then(response => {
+                        if (response.status === 400) {
+                            window.location.href = "/ofertas/misOfertas?deleted=true";  // Redirigir al cliente
+                        } else if (response.status === 404) {
+                            window.location.href = "/ofertas/misOfertas?deleted=false";  // Redirigir al cliente
+                        } else {
+                            window.location.href = "/";
+                        }
+                    })
+                    .catch(error => console.error("Error en la solicitud:", error));
+        });
+    });
+</script>
+<script src="/js/displayConfirmarCompraOferta.js"></script>
+{{/partial}}
+{{> templates/ofertas/oferta_upperBox}}

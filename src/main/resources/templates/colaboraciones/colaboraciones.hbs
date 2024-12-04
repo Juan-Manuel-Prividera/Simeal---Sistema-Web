@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{titulo}}</title>
+    <link rel="stylesheet" href="/css/navbar-style.css">
+    <link rel="stylesheet" href="/css/containers.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tarjetas.css">
+    <link rel="stylesheet" href="/css/colaboraciones.css">
+</head>
+<body>
+{{> templates/navbar}}
+<div class="container-supremo">
+    <div class="colaboracion-personal-container">
+        <div class="tarjeta-btns ml-auto mr-auto">
+            {{#if donarDinero}}
+            <a href="colaboracion/donarDinero"><button class="btn btn-dark mt-5 mb-3">Donar dinero</button></a>
+            {{/if}}
+            {{#if esHumano}}
+                {{#if donarVianda}}
+                <a href="colaboracion/donarVianda"><button class="btn btn-dark mb-3">Donar vianda</button></a>
+                {{/if}}
+                {{#if distribuirVianda}}
+                <a href="colaboracion/distribucionVianda"><button class="btn btn-dark mb-3">Distribuir vianda</button></a>
+                {{/if}}
+            {{else}}
+                {{#if adherirHeladera}}
+                <a href="colaboracion/adherirHeladera"><button class="btn btn-dark mb-3">Adherir heladera</button></a>
+                {{/if}}
+            {{/if}}
+        </div>
+       <button class="btn btn-info" style="width: 50%; margin-bottom: 5%;">
+            <a href="colaboraciones/configuracion" style="color: black; text-decoration: none; font-size: 140%; font-weight: bold;">Configurar colaboraciones</a>
+        </button>
+    </div>
+    <div class="container-frase-btn">
+        <div class="texto-motivacional">
+            Todo esto es posible<br>gracias a nuestros colaboradores
+        </div>
+        <button class="btn btn-info" style="width: 50%; margin-bottom: 5%;">
+            <a href="colaboraciones/historial" style="color: black; text-decoration: none; font-size: 140%; font-weight: bold;">Historial colaboraciones</a>
+        </button>
+    </div>
+</div>
+
+<style>
+    .texto-motivacional{
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* X, Y, blur, spread, and color */
+        padding: 5%;
+        margin-right: 10%;
+        background-color: antiquewhite;
+        border-radius: .5rem !important;
+    }
+
+</style>
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p>&copy; Sistema de Mejora Alimentaria</p>
+</footer>
+</body>
+</html>

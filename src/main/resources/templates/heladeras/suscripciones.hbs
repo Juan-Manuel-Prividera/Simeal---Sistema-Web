@@ -1,0 +1,82 @@
+{{> templates/navbar}}
+<div id="overlay">
+    <div id="overlayContent">
+        <h6 class="black-text">Suscripción eliminada</h6>
+        <p class="black-text">Suscripción eliminada correctamente.</p>
+        <button class="btn btn-dark my-button redondeado" onclick="hideOverlay()">
+            Ok
+        </button>
+    </div>
+    <script>
+        // Function to show the overlay
+        function showOverlay() {
+            document.getElementById("overlay").classList.add("show");
+        }
+
+        // Function to hide the overlay
+        function hideOverlay() {
+            document.getElementById("overlay").classList.remove("show");
+            // if (ruta != null) {
+            //     window.location.href = ruta;
+            // }
+        }
+
+    </script>
+</div>
+<div class="container-suprem-suscripciones">
+    <h1 class="mt-4">Suscripciones de Colaborador</h1>
+
+    <!-- Aquí se generarán las suscripciones -->
+    <div id="subscriptions-list">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Heladera</th>
+                <th>Tipo de suscripción</th>
+                <th>Cantidad crítica</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each suscripciones}}
+                <tr>
+                    <td>{{this.heladeraNombre}}</td>
+                    <td>{{this.tipoSuscripcion}}</td>
+                    <td>{{this.cantidadViandas}}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteSubscription({{this.id}})">Eliminar</button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function deleteSubscription(subscriptionId) {
+         if (confirm('¿Estás seguro de que deseas eliminar esta suscripción?')) {
+            console.log("haciendo solicitud de eliminacion")
+            fetch(`${window.origin}:80/suscripcion/${subscriptionId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        function showOverlay() {
+                            document.getElementById("overlay").classList.add("show");
+                        }
+                        function hideOverlay(ruta) {
+                            document.getElementById("overlay").classList.remove("show");
+                            if (ruta != null) {
+                                window.location.href = ruta;
+                            }
+                        }
+                        showOverlay();
+                    } else {
+                        alert('Error al eliminar la suscripción.');
+                    }
+                });
+
+        }
+    }
+</script>

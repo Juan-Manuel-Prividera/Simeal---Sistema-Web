@@ -1,0 +1,41 @@
+{{> templates/navbar}}
+<main>
+    <div class="img-container">
+        <img alt="Invitación a un taller de armado de viandas" src="/img/tallerViandas.gif">
+    </div>
+    <div style="display: flex; flex-direction: column; width: 70%;">
+    <div class="noticias-container">
+        <div class="noticia">
+            <h1>Tablón de noticias</h1>
+            <a href="https://www.friv.com/">
+                <h2 class="rounded">Nuevo taller de viandas</h2>
+            </a>
+            <a href="https://es.wikipedia.org/wiki/Club_Penguin">
+                <h2 class="rounded">Mejorando la salud mental con viandas</h2>
+            </a>
+            <a href="https://www.policiadelaciudad.gob.ar/">
+                <h2 class="rounded">Dos integrantes dejaron la materia 😺👍</h2>
+            </a>
+        </div>
+    </div>
+
+    {{#if esJuridico}}
+    <div class="noticias-container">
+        <div class="noticia">
+            <h1>Reportes</h1>
+            {{#each reportes}}
+            <div class="reporte mt-5" style="justify-content: start;">
+                <a href={{this.reporte}}>
+                    <h2 class="rounded">{{this.nombre}}</h2>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+    </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <!--<p>Lo que querramos poner</p>-->
+</footer>

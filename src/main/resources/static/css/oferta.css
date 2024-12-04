@@ -1,0 +1,464 @@
+.black-text{
+    color: black;
+}
+
+#confirmacion{
+    display: none;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+}
+
+.descripcion {
+    font-size: 20px;
+}
+
+/* Contenedor Superior */
+.container-superior {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    max-height: 15%;
+}
+
+.agregar-oferta{
+    margin-top: 4%;
+    margin-left: 4%;
+    display: flex;
+    width: 20% !important;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.agregar-oferta a{
+    width: 100% !important;
+    height: 60%;
+
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    height: 40vh;
+}
+
+.btn-container a{
+    width: 100%;
+    height: 30%;
+    margin-bottom: 15%;
+    text-align: center;
+}
+.filters{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+}
+
+#rubro {
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    width: 250px;
+    padding: 10px 15px; /* Espaciado interno */
+    border: 2px solid var(--verde); /* Borde con color */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 20px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    position: relative;
+    text-align: right;
+}
+
+#puntos-min,
+#puntos-max {
+    width: 100px; /* Ajusta el ancho según sea necesario */
+    padding: 5px;
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+    border: 1px solid var(--verde); /* Bordes con color para mantener consistencia */
+    border-radius: 10px; /* Bordes redondeados */
+}
+.points-min, .points-max {
+    color: black;
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    margin: 0 10px; /* Ajusta el margen horizontal si es necesario */
+}
+
+.points-min label, .points-max label {
+    margin-bottom: 5px; /* Espacio entre el label y el input */
+}
+
+.points-min input[type="number"], .points-max input[type="number"] {
+    width: 200%; /* Ajusta el ancho según sea necesario */
+    padding: 5px;
+    font-size: 16px; /* Tamaño de fuente */
+    border: 1px solid var(--verde); /* Bordes con color */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.points{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.available-points {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    color: black;
+    font-size: 200%;
+    align-content: end;
+    padding-right: 50px;
+    line-height: 50%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.value-points {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+    font-size: 250%;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Contenedor Inferior */
+
+.container-inferior {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #333; /* Fondo oscuro */
+    min-width:70%;
+}
+
+.offer-card {
+    background-color: #444;
+    border-radius: 10px;
+    width: calc(25% - 20px); /* 4 tarjetas por fila, con margen */
+    max-width: 200px;
+    margin: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 350px;
+    height: 100%;
+}
+
+
+.offer-image-short {
+    background-color: grey;
+    width: 80%;
+    height: 120px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.offer-image-large {
+    background-color: grey;
+    width: 110%;
+    height: 120px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+
+.offer-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.offer-update {
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.offer-card-2 {
+    background-color: #444;
+    border-radius: 10px;
+    width: 30%; /* 4 tarjetas por fila, con margen */
+    max-width: 50%;
+    max-height: 50%;
+    margin: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Contenedor Inferior izquierdo*/
+
+.container-inferior-izquierdo {
+    flex: 2; /* Ocupa 2/3 del espacio disponible */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #444; /* Color para diferenciar */
+}
+
+/* Contenedor Inferior derecho */
+
+.container-inferior-derecho {
+    padding: 20px;
+    background-color: #f1f1f1; /* Fondo claro para los detalles */
+    color: #333;
+    border-radius: 8px;
+    margin-left: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.container-inferior-derecho h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container-inferior-derecho img {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 400px;
+    max-height: 300px;
+    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor sin distorsionarse */
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+
+.texto-izquierda {
+    align-self: flex-start; /* Alinea el contenedor de texto a la izquierda */
+    text-align: left; /* Alinea el texto dentro del contenedor a la izquierda */
+    margin-bottom: 20px;
+}
+
+.container-inferior-derecho button {
+    position: absolute; /* Permite posicionar el botón de manera absoluta dentro del contenedor */
+    bottom: 1px; /* Ajusta el espacio desde el borde inferior */
+    width: 15%;
+    height: 60px;
+    border-radius: 20px;
+}
+.confirmation-box {
+    display: none;
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    padding: 3%;
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    text-align: center;
+    width: auto;
+    height: auto;
+    flex-direction:row;
+    z-index: 10; /* Asegura que el recuadro esté sobre los demás elementos */
+}
+
+.confirmation-text {
+    font-size: 24px;
+    margin-bottom: 20%; /* Espacio debajo del texto */
+}
+
+.confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around !important;
+    align-items: center !important;
+    width: 100%;
+}
+
+.confirm-btn {
+    margin-top: 4%;
+    width: 20% !important;
+    height: 6vh !important;
+    text-align: center !important;
+
+}
+
+.cancel-btn {
+    margin-top: 4%;
+    width: 20% !important;
+    height: 6vh !important;
+    text-align: center !important;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 30% !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15%;
+    align-content: center;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+a:hover{
+    text-decoration: none !important;
+    color:white !important;
+}
+
+.dark-btn{
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    width: 50% !important;
+    height: 5vh;
+    min-height: 60px;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30%;
+}
+.dark-btn :hover{
+    color: white !important;
+    text-decoration: none !important;
+}
+
+
+
+/*  CSS para agregar ofertas  */
+
+.btn-dark-return{
+    background-color: #333;
+    color: white;
+    width: 10%; /* Ajusta según el largo deseado */
+    height: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Contenedor general del formulario */
+.container-general {
+    background: linear-gradient(to bottom, #00a884, #0f6177); /* Degradado de fondo */
+    padding: 20px;
+    margin: 40px auto; /* Centrar horizontalmente */
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    align-content: center;
+}
+
+.container-general form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+}
+
+.btn {
+    width: 100% !important;
+}
+/* Título del formulario */
+.container-general .titulo {
+    text-align: center;
+    font-size: 400%;
+    color: white;
+    margin-bottom: 2%;
+    }
+
+/* Estilo de las etiquetas */
+/*.container-general .form-group label {*/
+/*    align-self: center;*/
+/*    font-size: 100%;*/
+/*    padding-right: 15%;*/
+/*    color: white;*/
+/*    display: block;*/
+/*}*/
+.form-group {
+    border-radius: 5px !important;
+    width: 80% !important;
+    height: 30% !important;
+    justify-content: center;
+    align-items: center;
+}
+.form-group label{
+    justify-self: start;
+    align-self: start;
+    margin-left: 40%;
+}
+/* Estilo de los campos de texto */
+.container-general .form-control {
+    /*align-self: center;*/
+    text-align: start;
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1%;
+}
+
+/* Estilo del input de carga de imagen */
+.container-general .form-control-file {
+    margin: 0 auto 20px auto;
+    display: block;
+}
+
+/* Centrar y espaciar los botones */
+.container-general .form-group.text-center {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    }
+
+.container-general .btn-success,
+.container-general .btn-danger {
+    width: 5%; /* Ancho de los botones */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    align-self: center;
+}
+
+/* Para mejorar el aspecto del botón de carga de imagen */
+#imagen {
+    display: block;
+    margin: 0 auto;
+    padding-left: 40%
+}

@@ -1,0 +1,19 @@
+{{> templates/navbar}}
+<div style="display: flex;flex-direction: row; width: 100%; align-items: center; justify-content: space-evenly;">
+<div class="reportes">
+    <div class="reporte">
+       <h1>Reportes semanales</h1>
+
+        <a class="btn btn-dark" href="/reporte">Forzar generacion de reporte</a>
+    </div>
+    <div style="display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center;">
+        {{#each reportes}}
+            <div class="reporte mt-5" style="flex-direction: column; width: 60%; text-align: center;">
+                <a href="{{this.reporte}}" style="width: 100%; text-decoration: none;">
+                    <h2 class="rounded">{{this.nombre}}</h2>
+                </a>
+            </div>
+        {{/each}}
+    </div>
+</div>
+</div>

@@ -1,0 +1,69 @@
+{{> templates/navbar}}
+
+<div class="linear-container">
+    {{#if popup_title}}
+        {{> templates/popup}}
+    {{/if}}
+
+    <div class="form-heladeras">
+        <form class="form-group-heladeras" action="/colaboracion/adherirHeladera" method="POST">
+            <h3 class="mb-5 mt-5">Adherir nueva heladera</h3>
+
+            <!-- Campo para ingresar el nombre de la heladera -->
+            <label for="nombreHeladera">Nombre de la heladera</label>
+            <input id="nombreHeladera" name="nombreHeladera" type="text" class="form-control mb-4" placeholder="Nombre de heladera" required>
+
+            <!-- Campo para ingresar Modelo de la heladera -->
+            <label for="modeloHeladera">Modelo de heladera</label>
+            <select class="form-control mb-4" name="modeloHeladera" id="modeloHeladera">
+                {{#each modelosHeladera}}
+                    <option value={{this.id}}>{{this.nombre}}</option>
+                {{/each}}
+            </select>
+            <!-- Campo para ingresar la ubicación de la heladera -->
+            <label for="ubicacionHeladera">Ubicación</label>
+            <select class="form-control" name="ubicacionHeladera" id="ubicacionHeladera">
+                {{#each ubicacionesPosibles}}
+                    <option value={{this.id}}>{{this.direccion}}</option>
+                {{/each}}
+            </select>
+
+            <!-- Botón de aceptación -->
+            <div style="display: flex; justify-content: center; align-items: center; width: 20%; flex-direction: column;">
+                <button class="btn btn-success rounded mt-3 mb-3 w-100" type="submit">Adherir Heladera</button>
+                <a class="btn btn-danger rounded mb-3 w-100" href="/colaboraciones">Cancelar</a>
+                <button id="btnUbicaciones" type="button" class="btn btn-info rounded w-100" onclick=obtenerUbicacion()>Recomendacion de ubicaciones</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function obtenerUbicacion() {
+        fetch(`${window.origin}:80/recomendacion/ubicaciones`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+            })
+            .then(data => {
+                console.log(data)
+                let ubicaciones = data;
+                console.log(ubicaciones)
+                ubicaciones.forEach(ubicacion => {
+                    console.log(ubicacion)
+                    const selectUbicacion = document.getElementById('ubicacionHeladera');
+                    const nuevaOpcion = document.createElement('option');
+                    nuevaOpcion.value = ubicacion.id;
+                    nuevaOpcion.textContent = `⭐ ${ubicacion.direccion}`;
+                    document.getElementById('btnUbicaciones').disabled = true
+                    selectUbicacion.appendChild(nuevaOpcion);
+                })
+            })
+
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>

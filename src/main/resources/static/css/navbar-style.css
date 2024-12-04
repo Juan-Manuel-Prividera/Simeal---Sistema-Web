@@ -1,0 +1,130 @@
+/*
+-------------------- Colores ----------------------------
+*/
+
+:root {
+    /*--verde: rgb(114, 196, 156);*/
+
+    --verde: rgb(5, 161, 133);
+}
+/*
+--------------------- Titulo y Logo ---------------------
+ */
+.container-fluid{
+    background-color: var(--verde);
+    width: 100%;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 2.5%;
+    height: auto;
+}
+
+.titulo{
+    color: #000000;
+    font-size: 4vh;
+}
+
+.icon-text{
+    /*font-size: 24px;*/
+    font-size: 2.5vh;
+    align-content: center;
+    color: black;
+    font-style: italic;
+}
+
+.icon-text i {
+    /*font-size: 50px;*/
+    font-size: 5vh;
+    color: black;
+}
+
+
+
+/*
+--------------------- NAV BAR ---------------------
+ */
+.collapse{
+    width: 100%;
+}
+.navbar-collapse{
+    display: flex;
+    background-color: var(--verde);
+    width: 100%;
+    margin: 0;
+}
+
+.navbar-expand-lg{
+    background-color: var(--verde);
+}
+.navbar-nav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--verde);
+}
+
+.nav-item{
+    width: 100%;
+    text-align: center;
+    background-color: var(--verde);
+    /*font-size: 20px;*/
+   font-size: 1.2vw;
+}
+.nav-item .seleccionado{
+    background-color: white;
+    font-style: italic;
+    height: 100%;
+}
+
+.nav-link {
+    color: #000000;
+    background-color: var(--verde);
+    display: flex;
+
+}
+.nav-link .seleccionado{
+    background-color: white;
+    font-style: italic;
+}
+
+.nav-link:hover{
+
+    color: #ffffff;
+    background-color: #135c52;
+}
+
+#logout-btn{
+    align-items: center;
+    justify-content: center;
+    background-color: #135c52;
+    border: 0;
+    width: 40% !important;
+    font-size: 70% !important;
+}
+
+#heladera-img{
+    cursor: pointer;
+}
+
+.btn-dark{
+    align-items: center;
+    width: 60%;
+}
+.navbar{
+   padding: 0 0 0 0 !important;
+}
+
+.logout-link {
+    color: #000000;
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    color: #ffffff;
+}

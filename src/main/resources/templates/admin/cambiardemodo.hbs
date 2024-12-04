@@ -1,0 +1,38 @@
+{{> templates/navbar}}
+<div class="seleccion-container">
+    <div id="seleccion_modo">
+        <a onclick="setUserType('HUMANO')">
+            <button class="btn btn-dark" >Persona</button>
+        </a>
+        <a onclick="setUserType('JURIDICO')">
+            <button class="btn btn-dark" >Empresa</button>
+        </a>
+    </div>
+
+</div>
+
+<script>
+    function setUserType(userType) {
+        fetch('http://localhost:8080/setuser/' + userType, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    console.log("respondio ok")
+                    return response
+                })
+                .then(data => {
+                    // Puedes redirigir o actualizar la UI según sea necesario
+                    console.log(data.message); // Muestra el mensaje de éxito en la consola
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+    }
+
+</script>

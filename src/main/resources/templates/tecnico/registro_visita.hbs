@@ -1,0 +1,59 @@
+{{> templates/header}}
+{{#if popup_title}}
+    {{> templates/popup}}
+{{/if}}
+<div class="container my-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Registrar Visita Técnica</h2>
+
+    <form id="registroVisitaForm" method="POST" action="/{{encargo_id}}/visita" class="form-group"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-left: 0; width: 80%"
+    enctype="multipart/form-data"
+    >
+    <!-- Campo de Descripción -->
+        <label for="descripcion" style="margin-left: 0;">Descripción del Incidente:</label>
+        <textarea id="descripcion" name="descripcion" class="form-control" rows="4" style="width: 100%;"></textarea>
+
+    <!-- Campo de Estado de Éxito -->
+        <label for="exitosa"  style="margin-left: 0;">¿Fue exitosa?</label>
+        <select id="exitosa" name="exitosa" class="form-control" style="width: 100%;" required>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select>
+    <!-- Campo de Fecha y Hora -->
+        <label for="fechaHora" style="margin-left: 0;">Fecha y Hora:</label>
+        <input type="datetime-local" id="fechaHora" name="fechaHora"  style="width: 100%;" class="form-control" required>
+
+    <!-- Campo de Imagen (Opcional) -->
+        <label for="imagen" style="margin-left: 0;">Imagen (opcional):</label>
+        <input type="file" id="imagen" name="imagen" style="width: 100%;" class="form-control">
+
+        <!-- Botón de Envío -->
+        <button type="submit" class="btn btn-success w-70 mt-3">Registrar Visita</button>
+    </form>
+</div>
+
+<script>
+    // document.getElementById('registroVisitaForm').addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //     const formData = new FormData(this);
+    //     fetch(this.action, {
+    //         method: 'POST',
+    //         body: formData,
+    //     })
+    // });
+        // Obtén la fecha y hora actual
+        const now = new Date();
+
+        // Formatea la fecha y hora en el formato requerido por <input type="datetime-local">
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Mes empieza desde 0
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        // Combina los valores en el formato esperado
+        const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+        // Asigna el valor al input
+        document.getElementById('fechaHora').value = formattedDateTime;
+</script>

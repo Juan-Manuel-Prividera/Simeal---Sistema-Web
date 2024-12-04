@@ -1,0 +1,165 @@
+{{#partial "contenido"}}
+    {{#if popup_title}}
+        {{> templates/popup}}
+    {{/if}}
+    <style src="/css/tarjetas.css"></style>
+<div>
+    <form method="POST" action="/tarjeta/new" name="formNewTarjeta" class="agregar-tarjeta">
+        <div class="form-container-tarjeta">
+            <div class="left">
+                <h2>Datos personales</h2>
+                <label for="nombre">*Nombre/s</label>
+                <input type="text" class="form-control mb-4" name="nombre" id="nombre" placeholder="Nombre" required>
+                <label for="apellido">*Apellido/s</label>
+                <input type="text" class="form-control mb-4" name="apellido" id="apellido" placeholder="Apellido" required>
+                <label for="documentoNro">Documento</label>
+                <div class="documento-container">
+                    <select style="margin-top: 1%" class="form-control" name="documentoTipo">
+                        <option value="" disabled selected hidden>...</option>
+                        <option value="dni">DNI</option>
+                        <option value="pasaporte">Pasaporte</option>
+                        <option value="libreta">Libreta</option>
+                    </select>
+                    <input type="text" class="form-control mb-4" name="documentoNro" id="documentoNro" placeholder="Documento">
+                </div>
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input type="date" class="form-control mb-4 fecha" max="" name="nacimiento" id="nacimiento" placeholder="Fecha de nacimiento">
+
+<!--                Ubicacion opcional para las personas vulnerables -->
+                <label for="calle_nombre">Ubicación: nombre de calle</label>
+                <input type="text"
+                       class="form-control mb-4"
+                       name="calle_nombre"
+                       id="calle_nombre"
+                       placeholder="Nombre de la calle">
+
+                <label for="calle_altura">Ubicación: altura de calle</label>
+                <input type="number"
+                       class="form-control mb-4"
+                       name="calle_altura"
+                       id="calle_altura"
+                       placeholder="Altura de la calle">
+
+                <label for="codigo_postal">Ubicación: código postal</label>
+                <input type="number"
+                       class="form-control mb-4"
+                       name="codigo_postal"
+                       id="codigo_postal"
+                       placeholder="Código postal">
+
+                <label for="provincia" class="form-label">Selecciona Provincias</label>
+                <select id="provincia" name="provincia" class="form-control" style="width: 100%;" onchange="actualizarLocalidades()" >
+                    <option value="" disabled selected hidden>Provincias</option>
+                    <option value="Buenos_Aires">Buenos Aires</option>
+                    <option value="Ciudad_Autonoma_De_Buenos_Aires">Ciudad Autónoma de Buenos Aires</option>
+                    <option value="Catamarca">Catamarca</option>
+                    <option value="Chaco">Chaco</option>
+                    <option value="Chubut">Chubut</option>
+                    <option value="Cordoba">Córdoba</option>
+                    <option value="Corrientes">Corrientes</option>
+                    <option value="Entre_Rios">Entre Ríos</option>
+                    <option value="Formosa">Formosa</option>
+                    <option value="Jujuy">Jujuy</option>
+                    <option value="La_Pampa">La Pampa</option>
+                    <option value="La_Rioja">La Rioja</option>
+                    <option value="Mendoza">Mendoza</option>
+                    <option value="Misiones">Misiones</option>
+                    <option value="Neuquen">Neuquén</option>
+                    <option value="Rio_Negro">Río Negro</option>
+                    <option value="Salta">Salta</option>
+                    <option value="San_Juan">San Juan</option>
+                    <option value="San_Luis">San Luis</option>
+                    <option value="Santa_Cruz">Santa Cruz</option>
+                    <option value="Santa_Fe">Santa Fe</option>
+                    <option value="Santiago_del_Estero">Santiago del Estero</option>
+                    <option value="Tierra_del_Fuego">Tierra del Fuego</option>
+                    <option value="Tucuman">Tucumán</option>
+                </select>
+
+                <label for="localidad" class="form-label mt-2">Localidad</label>
+                <select id="localidad" name="localidad" class="form-control" style="width: 100%;">
+                    <option value="" disabled selected hidden>Localidades</option>
+                </select>
+            </div>
+
+            <div class="right">
+                <h2>Menores a cargo</h2>
+                <div class="hijo-container">
+                    <label for="nombreHijo">Nombre/s Hijo/a</label>
+                    <input type="text" class="form-control mb-4" name="nombreHijo" id="nombreHijo" placeholder="Nombre">
+                    <label for="apellidoHijo">Apellido/s Hijo/a</label>
+                    <input type="text" class="form-control mb-4" name="apellidoHijo" id="apellidoHijo" placeholder="Apellido">
+                    <label for="documentoNroHijo">Documento</label>
+                    <div class="documento-container">
+                        <select style="margin-top: 1%" class="form-control" name="documentoTipoHijo">
+                            <option value="" disabled selected hidden>...</option>
+                            <option value="dni">DNI</option>
+                            <option value="pasaporte">Pasaporte</option>
+                            <option value="libreta">Libreta</option>
+                        </select>
+                        <input type="text" class="form-control mb-4" name="documentoNroHijo" id="documentoNroHijo" placeholder="Documento">
+                     </div>
+                    <label for="apellido">Fecha de nacimiento</label>
+                    <input type="date" class="form-control mb-4 fecha" max="" name="nacimientoHijo" id="nacimiento" placeholder="Fecha de nacimiento">
+                    <hr style="border-width:0.5vh;background-color:#135c52;">
+                </div>
+                <div class="agregar-hijo" id="agregar-hijo-btn">
+                    <img alt="Agregar hijo" class="plus-img" src="/img/plus-icon.png">
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-dark mb-3" type="submit">Registrar</button>
+    </form>
+</div>
+<script>
+    document.getElementById('agregar-hijo-btn').addEventListener('click', function() {
+        // Find the container to duplicate
+        const hijoContainer = document.querySelector('.hijo-container');
+        // Clone the container
+        const newHijoContainer = hijoContainer.cloneNode(true);
+        // Insert the clone after the last hijo-container
+        hijoContainer.parentNode.insertBefore(newHijoContainer, hijoContainer.nextSibling);
+    });
+
+    // Obtener la fecha actual
+    const today = new Date().toISOString().split('T')[0];
+
+    // Seleccionar todos los inputs con la clase 'fecha' y establecer el valor máximo
+    document.querySelectorAll('.fecha').forEach(input => {
+        input.setAttribute('max', today);
+    });
+</script>
+    <script>
+        function actualizarLocalidades() {
+            const provinciaSeleccionada = document.getElementById("provincia").value;
+            const localidadSelect = document.getElementById("localidad");
+
+            // Limpiar las opciones actuales de localidad
+            localidadSelect.innerHTML = '<option value="">Selecciona una localidad</option>';
+
+            // Si hay una provincia seleccionada, hacer una solicitud al servidor
+            if (provinciaSeleccionada) {
+                fetch(`/localidades?provincia=${encodeURIComponent(provinciaSeleccionada)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            // Añadir las localidades al desplegable
+                            data.forEach(localidad => {
+                                console.log(localidad)
+                                const option = document.createElement("option");
+                                option.value = localidad.id;
+                                option.text = localidad.nombre;
+                                localidadSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error('Error al obtener localidades:', error));
+            }
+        }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{{/partial}}
+{{> templates/tarjetas/home}}

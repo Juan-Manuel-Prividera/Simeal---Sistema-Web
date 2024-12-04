@@ -1,0 +1,17 @@
+# Mediciones
+Temperatura
+./heladera_publicar_medicion.py 1234 TEMPERATURA 4.6
+
+Fraude
+./heladera_publicar_medicion.py 1234 FRAUDE
+
+# Operaciones
+Ingreso
+./heladera_publicar_operacion.py 1234 INGRESO 123
+
+Retiro
+./heladera_publicar_operacion.py 1234 RETIRO 123
+
+# Solicitudes
+./heladera_suscribir_solicitudes.py 1234
+

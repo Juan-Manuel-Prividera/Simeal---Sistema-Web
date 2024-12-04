@@ -1,0 +1,195 @@
+html{
+    height: 1vh;
+    padding: 0;
+    margin: 0;
+}
+main{
+    padding: 0;
+    margin: 0;
+    height: 115vh;
+
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 115vh;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+
+}
+
+footer{
+    margin: 0 0 0 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.linear-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin-top: 0;
+    height: 115%;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.btn-seleccionar{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    font-size: 120% !important;
+}
+
+#return-home-btn{
+    width: 100%;
+}
+
+
+
+.status-buttons a{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+}
+.status-buttons a:hover{
+    text-decoration: none;
+}
+
+.form-group a{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group a:hover{
+    text-decoration: none;
+}
+
+
+.redondeado{
+    border-radius: 1rem;
+}
+
+.sombreado{
+    background-color: #000000;
+    box-shadow: 0.8vh 0.8vh 1vh rgba(0, 0, 0, 0.5);
+}
+
+.logo-peque {
+    width: 10%;
+    height: auto;
+}
+
+.status-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+}
+
+
+.info-heladera{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 40%;
+
+    height: 30vh;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0 ;
+}
+
+.status-heladera{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: left;
+    background-color: rgba(114, 196, 156, 0.52);
+    width: 50%;
+    height: 15vh;
+}
+.status-heladera-bad{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: left;
+    background-color: rgb(197, 73, 73);
+    width: 50%;
+    height: 15vh;
+}
+.status-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: left;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.btn-reportar{
+    color: white;
+    width: 50%;
+    background-color: #a2102e !important;
+    border-color: #a2102e !important;
+    font-size: 110% !important;
+    text-decoration: none !important;
+}
+
+.btn-custom{
+    color: white;
+    width: 50%;
+    font-size: 110% !important;
+}
+
+.custom-file-imput::file-selector-button{
+    color: black;
+}
+
+.centered-full-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.historial-container{
+    justify-content: center;
+    background: red;
+}
+
+
+

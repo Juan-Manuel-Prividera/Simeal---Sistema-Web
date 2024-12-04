@@ -1,0 +1,77 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ofertas</title>
+    <link rel="stylesheet" href="/css/navbar-style.css">
+    <link rel="stylesheet" href="/css/containers.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/oferta.css">
+</head>
+<body>
+
+{{> templates/popup}}
+
+<header>
+    <div class="container-fluid">
+        <div class="header-container">
+            <img src = "/img/heladera.png"
+                 alt="logo"
+                 id="heladera-img"
+                 class="logo mt-2 mb-2 ml-3 mr-3"
+                 onclick="window.location.href='/home';">
+            <h1 class="titulo ml-2">Sistema de Mejora Alimentaria</h1>
+
+            <div class="icon-text ml-auto">
+                <span class="m-3">{{username}}</span>
+                <i class="bi bi-person mr-3"></i>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<div class="container-general" style="margin-top:0">
+    {{#if popup_title}}
+        {{> templates/popup}}
+    {{/if}}
+
+    {{#if agregarOferta}}
+    <h2 class="titulo"><strong>Agregar Oferta</strong></h2>
+    <form id="miFormulario" method="POST" action="publicar" enctype="multipart/form-data">
+    {{else}}
+    <h2 class="titulo"><strong>Modificar Oferta</strong></h2>
+    <form id="miFormulario" method="POST" action="/ofertas/misOfertas/{{ofertaId}}/modificar" enctype="multipart/form-data">
+    {{/if}}
+        <div class="form-group">
+            <label for="nombre">*Nombre:</label>
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre" {{required}}>
+
+            <label for="rubro">*Rubro:</label>
+            <input type="text" class="form-control" name="rubro" placeholder="Rubros" {{required}}>
+
+            <label for="puntos">*Puntos Requeridos:</label>
+            <input type="number" class="form-control" name="puntos" placeholder="xxxx" {{required}}>
+
+            <label for="productoNombre">*Nombre del producto:</label>
+            <input type="text" class="form-control" name="productoNombre" placeholder="productoNombre" {{required}}>
+
+            <label for="descripcion">*Descripcion:</label>
+            <input type="text" class="form-control" name="descripcion" placeholder="Descripcion" {{required}}>
+
+            <label for="image">*Cargar Imagen</label>
+            <input type="file" class="form-control-file" style="width:auto" name="imagen" accept="imagen/*" {{required}}>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success mt-3 mb-3">Aceptar</button>
+            <a type="button" class="btn btn-danger" href="/ofertas/misOfertas">Cancelar</a>
+        </div>
+    </form>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
